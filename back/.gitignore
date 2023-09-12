@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+=======
+# compiled output
+/dist
+/node_modules
+
+>>>>>>> cdd3b3cc3611e4028c6750685ff47154e7451cce
+# Logs
+logs
+*.log
+npm-debug.log*
+<<<<<<< HEAD
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+package-lock.json
+=======
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+
+db
+>>>>>>> cdd3b3cc3611e4028c6750685ff47154e7451cce

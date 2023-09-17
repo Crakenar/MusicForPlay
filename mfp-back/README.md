@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-    Bleu électrique - #00A0B0
-    Or brillant - #FFD700
-    Rouge passion - #FF3855
-    Violet profond - #800080
-    Vert vibrant - #00CC66
-    Rose tendre - #FFB6C1
-    Orange énergique - #FFA500
-    Noir mélodieux - #000000
-    Jaune ensoleillé - #FFFF66
-    Argent métallique - #C0C0C0
-=======
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -83,4 +71,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
->>>>>>> cdd3b3cc3611e4028c6750685ff47154e7451cce

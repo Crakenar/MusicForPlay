@@ -7,9 +7,12 @@ import {
   Body,
   UseGuards,
   Request,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { UserDTO, createUserDTO } from 'src/users/user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -17,9 +20,15 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async login(@Body() signInDto: Record<string, any>) {
-    //do not use Record Type but a DTO type
-    return this.authService.signIn(signInDto.username, signInDto.password);
+  async login(@Body() signInDto: createUserDTO) {
+    return this.authService.signIn(signInDto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('signUp')
+  @UsePipes(new ValidationPipe())
+  async signUp(@Body() signUpDto: UserDTO) {
+    return this.authService.signUp(signUpDto);
   }
 
   @UseGuards(AuthGuard)

@@ -1,23 +1,49 @@
-import { Injectable } from '@nestjs/common';
-
-export type User = any; //my model here
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './user.entity';
+import { UserDTO } from './user.dto';
+import { Helper } from '../Helpers/helper';
+export type user = User; //my model here
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[] = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+  constructor(
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
+    private helper: Helper,
+  ) {}
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find((user) => user.username === username);
+  async findOneByUsername(username: string): Promise<UserDTO | null> {
+    return this.usersRepository.findOne({ where: { username } });
+  }
+
+  async findOneByEmail(email: string): Promise<UserDTO | null> {
+    return this.usersRepository.findOne({ where: { email } });
+  }
+
+  async create(user: UserDTO): Promise<UserDTO | null> {
+    const userAlreadyExist = await this.findOneByEmail(user.email);
+    if (userAlreadyExist) {
+      throw new UnauthorizedException();
+    }
+    const hashPassword = await this.helper.hashPassword(
+      user.password.toString(),
+    );
+    user.password = hashPassword;
+    const createdUser = await this.usersRepository.save(user);
+    return createdUser;
+  }
+
+  async findAll(): Promise<UserDTO[]> {
+    return this.usersRepository.find();
+  }
+
+  async findOne(id: number): Promise<UserDTO | null> {
+    return this.usersRepository.findOneBy({ id });
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.usersRepository.delete(id);
   }
 }

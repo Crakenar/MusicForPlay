@@ -2,8 +2,9 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { UserDTO } from './user.dto';
+import { UserDTO } from './dto/user.dto';
 import { Helper } from '../Helpers/helper';
+import { createUserDTO } from './dto/create-user.dto';
 export type user = User; //my model here
 
 @Injectable()
@@ -22,7 +23,7 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { email } });
   }
 
-  async create(user: UserDTO): Promise<UserDTO | null> {
+  async create(user: createUserDTO): Promise<UserDTO | null> {
     const userAlreadyExist = await this.findOneByEmail(user.email);
     if (userAlreadyExist) {
       throw new UnauthorizedException();

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Song } from 'src/song/song.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -13,4 +14,7 @@ export class User {
   firstName: string;
   @Column({ nullable: true })
   lastName: string;
+
+  @OneToMany(() => Song, (song) => song.author)
+  songs: Song[];
 }

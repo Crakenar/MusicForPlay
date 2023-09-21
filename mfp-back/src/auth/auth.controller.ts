@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-import { UserDTO, createUserDTO } from 'src/users/user.dto';
+import { UserDTO } from 'src/users/dto/user.dto';
+import { createUserDTO } from 'src/users/dto/create-user.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -20,6 +22,9 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
+  @ApiOperation({
+    description: 'Login du user via le createUserDTO, creating a JWT',
+  })
   async login(@Body() signInDto: createUserDTO) {
     return this.authService.signIn(signInDto);
   }
@@ -27,7 +32,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('signUp')
   @UsePipes(new ValidationPipe())
-  async signUp(@Body() signUpDto: UserDTO) {
+  @ApiOperation({
+    description: 'SignUp du user via le createUserDTO, creating a JWT',
+  })
+  async signUp(@Body() signUpDto: createUserDTO) {
     return this.authService.signUp(signUpDto);
   }
 

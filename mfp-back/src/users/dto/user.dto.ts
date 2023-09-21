@@ -9,10 +9,3 @@ export class UserDTO {
   firstName: string;
   lastName: string;
 }
-
-export class createUserDTO {
-  @IsNotEmpty({ message: 'Email is required' })
-  @IsEmail({}, { message: 'Email is not valid' })
-  email: string;
-  password: string;
-}

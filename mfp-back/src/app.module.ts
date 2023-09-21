@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
+import { SongModule } from './song/song.module';
+import { Song } from './song/song.entity';
 
 @Module({
   imports: [
@@ -17,11 +19,12 @@ import { User } from './users/user.entity';
       username: 'root',
       password: '123',
       database: 'mfp',
-      entities: [User],
+      entities: [User, Song],
       retryAttempts: 5,
       autoLoadEntities: true,
       synchronize: true, // not in production
     }),
+    SongModule,
   ],
   controllers: [AppController],
   providers: [AppService],

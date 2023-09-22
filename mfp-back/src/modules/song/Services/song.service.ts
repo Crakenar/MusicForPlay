@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { CreateSongDTO } from './dto/create-song.dto';
-import { Song } from './song.entity';
+import { CreateSongDTO } from '../dto/create-song.dto';
+import { Song } from '../models/song.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 

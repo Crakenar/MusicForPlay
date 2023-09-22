@@ -10,10 +10,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
-import { UserDTO } from 'src/users/dto/user.dto';
-import { createUserDTO } from 'src/users/dto/create-user.dto';
+import { AuthService } from '../Services/auth.service';
+import { AuthGuard } from '../Guards/auth.guard';
+import { createUserDTO } from 'src/modules/users/dto/create-user.dto';
 import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('auth')

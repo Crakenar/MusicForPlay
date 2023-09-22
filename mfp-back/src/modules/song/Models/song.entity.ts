@@ -1,4 +1,4 @@
-import { User } from 'src/users/user.entity';
+import { User } from 'src/modules/users/models/user.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import {
   DeleteDateColumn,

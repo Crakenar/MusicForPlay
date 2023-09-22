@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
-import { UserDTO } from './dto/user.dto';
-import { Helper } from '../Helpers/helper';
-import { createUserDTO } from './dto/create-user.dto';
+import { User } from '../models/user.entity';
+import { UserDTO } from '../dto/user.dto';
+import { Helper } from '../../../Helpers/helper';
+import { createUserDTO } from '../dto/create-user.dto';
 export type user = User; //my model here
 
 @Injectable()
